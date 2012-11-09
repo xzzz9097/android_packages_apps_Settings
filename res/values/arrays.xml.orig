@@ -48,7 +48,7 @@
         <item>dd-MM-yyyy</item>
         <item>yyyy-MM-dd</item>
     </string-array>
-
+    
     <!-- Display settings.  The delay in inactivity before the dream is shown. These are shown in a list dialog. -->
     <string-array name="dream_timeout_entries">
         <item>Never</item>
@@ -80,8 +80,8 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
-
-    <!-- Security settings.  The delay after screen is turned off until device locks.
+    
+    <!-- Security settings.  The delay after screen is turned off until device locks. 
          These are shown in a list dialog. -->
     <string-array name="lock_after_timeout_entries">
         <item>Immediately</item>
@@ -116,7 +116,7 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
-
+    
     <string-array name="entries_font_size">
         <item msgid="6490061470416867723">Small</item>
         <item msgid="3579015730662088893">Normal</item>
@@ -130,7 +130,7 @@
         <item>1.15</item>
         <item>1.30</item>
     </string-array>
-
+    
     <!-- TTS settings -->
 
     <!-- Default speech rate choices -->
@@ -139,11 +139,7 @@
         <item>Slow</item>
         <item>Normal</item>
         <item>Fast</item>
-        <item>Faster</item>
         <item>Very fast</item>
-        <item>Rapid</item>
-        <item>Very rapid</item>
-        <item>Fastest</item>
     </string-array>
     <!-- Do not translate. -->
     <string-array name="tts_rate_values">
@@ -152,10 +148,6 @@
         <item>100</item>
         <item>150</item>
         <item>200</item>
-        <item>250</item>
-        <item>300</item>
-        <item>350</item>
-        <item>400</item>
     </string-array>
 
     <!-- Default pitch choices -->
@@ -278,10 +270,12 @@
 
    <!-- Wi-Fi AP settings.  The type of security a Wi-Fi AP supports. -->
    <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
-    <string-array name="wifi_ap_security">
-        <item>@string/wifi_security_none</item>
-        <item>@string/wifi_security_wpa</item>
-        <item>@string/wifi_security_wpa2</item>
+    <string-array name="wifi_ap_security" translatable="false">
+        <item>Open</item>
+        <!-- Do not translate. -->
+        <item>WPA PSK</item>
+        <!-- Do not translate. -->
+        <item>WPA2 PSK</item>
     </string-array>
 
     <!-- Match this with the constants in WifiDialog. --> <skip />
@@ -435,14 +429,7 @@
         <item>PWD</item>
     </string-array>
 
-    <!-- Phase 2 options for PEAP -->
-    <string-array name="wifi_peap_phase2_entries">
-        <item>None</item>
-        <item>MSCHAPV2</item>
-        <item>GTC</item>
-    </string-array>
-
-    <!-- Phase 2 options for rest of EAP methods -->
+    <!-- Phase 2 options -->
     <string-array name="wifi_phase2_entries">
         <item>None</item>
         <item>PAP</item>
@@ -547,29 +534,6 @@
         <item>0</item>
     </string-array>
 
-    <!-- MVNO Info used in APN editor -->
-    <string-array name="mvno_type_entries">
-        <!-- Do not translate. -->
-        <item>None</item>
-        <!-- Do not translate. -->
-        <item>SPN</item>
-        <!-- Do not translate. -->
-        <item>IMSI</item>
-        <!-- Do not translate. -->
-        <item>GID</item>
-    </string-array>
-
-    <string-array translatable="false" name="mvno_type_values">
-        <!-- Do not translate. -->
-        <item></item>
-        <!-- Do not translate. -->
-        <item>spn</item>
-        <!-- Do not translate. -->
-        <item>imsi</item>
-        <!-- Do not translate. -->
-        <item>gid</item>
-    </string-array>
-
     <!-- Apps on SD instalaltion location options in ApplicationSettings -->
     <string-array name="app_install_location_entries">
         <item>Internal device storage</item>
@@ -584,86 +548,11 @@
         <item>auto</item>
     </string-array>
 
-    <!-- Names of categories of app ops tabs -->
-    <string-array name="app_ops_categories">
-        <item>Operations</item>
-    </string-array>
-
-    <!-- User display names for app ops codes -->
-    <string-array name="app_ops_summaries">
-        <item>coarse location</item>
-        <item>fine location</item>
-        <item>GPS</item>
-        <item>vibrate</item>
-        <item>read contacts</item>
-        <item>modify contacts</item>
-        <item>read call log</item>
-        <item>modify call log</item>
-        <item>read calendar</item>
-        <item>modify calendar</item>
-        <item>wi-fi scan</item>
-        <item>notification</item>
-        <item>cell scan</item>
-        <item>call phone</item>
-        <item>read SMS</item>
-        <item>write SMS</item>
-        <item>receive SMS</item>
-        <item>receive emergency SMS</item>
-        <item>receive MMS</item>
-        <item>receive WAP push</item>
-        <item>send SMS</item>
-        <item>read ICC SMS</item>
-        <item>write ICC SMS</item>
-        <item>modify settings</item>
-        <item>draw on top</item>
-        <item>access notifications</item>
-        <item>camera</item>
-        <item>record audio</item>
-        <item>play audio</item>
-        <item>read clipboard</item>
-        <item>modify clipboard</item>
-    </string-array>
-
-    <!-- User display names for app ops codes -->
-    <string-array name="app_ops_labels">
-        <item>Location</item>
-        <item>Location</item>
-        <item>Location</item>
-        <item>Vibrate</item>
-        <item>Read contacts</item>
-        <item>Modify contacts</item>
-        <item>Read call log</item>
-        <item>Modify call log</item>
-        <item>Read calendar</item>
-        <item>Modify calendar</item>
-        <item>Location</item>
-        <item>Post notification</item>
-        <item>Location</item>
-        <item>Call phone</item>
-        <item>Receive SMS/MMS</item>
-        <item>Send SMS/MMS</item>
-        <item>Receive SMS/MMS</item>
-        <item>Receive SMS/MMS</item>
-        <item>Receive SMS/MMS</item>
-        <item>Receive SMS/MMS</item>
-        <item>Send SMS/MMS</item>
-        <item>Receive SMS/MMS</item>
-        <item>Send SMS/MMS</item>
-        <item>Modify settings</item>
-        <item>Draw on top</item>
-        <item>Access notifications</item>
-        <item>Camera</item>
-        <item>Record audio</item>
-        <item>Play audio</item>
-        <item>Read clipboard</item>
-        <item>Modify clipboard</item>
-    </string-array>
-
     <!-- Titles for the list of long press timeout options. -->
     <string-array name="long_press_timeout_selector_titles">
         <!-- A title for the option for short long-press timeout [CHAR LIMIT=25] -->
         <item>Short</item>
-        <!-- A title for the option for medium long-press timeout [CHAR LIMIT=25] -->
+        <!-- A title for the option for medium long-press timeout [CHAR LIMIT=25] -->        
         <item>Medium</item>
         <!-- A title for the option for long long-press timeout [CHAR LIMIT=25] -->
         <item>Long</item>
@@ -797,36 +686,6 @@
         <item>error</item>
     </string-array>
 
-    <!-- Titles for non-rectangular clipping preference. [CHAR LIMIT=35] -->
-    <string-array name="show_non_rect_clip_entries">
-        <item>Off</item>
-        <item>Draw non-rectangular clip region in blue</item>
-        <item>Highlight tested drawing commands in green</item>
-    </string-array>
-
-    <!-- Values for non-rectangular clipping preference. -->
-    <string-array name="show_non_rect_clip_values" translatable="false" >
-        <item>hide</item>
-        <item>region</item>
-        <item>highlight</item>
-    </string-array>
-
-    <!-- Titles for frame time tracking preference. [CHAR LIMIT=35] -->
-    <string-array name="track_frame_time_entries">
-        <item>Off</item>
-        <item>On screen as bars</item>
-        <item>On screen as lines</item>
-        <item>In adb shell dumpsys gfxinfo</item>
-    </string-array>
-
-    <!-- Values for frame time tracking preference. -->
-    <string-array name="track_frame_time_values" translatable="false" >
-        <item>false</item>
-        <item>visual_bars</item>
-        <item>visual_lines</item>
-        <item>true</item>
-    </string-array>
-
     <!-- Titles for app process limit preference. [CHAR LIMIT=35] -->
     <string-array name="app_process_limit_entries">
         <item>Standard limit</item>
@@ -914,7 +773,27 @@
         <item>Always allow</item>
     </string-array>
 
-<!-- Notification Shortcuts -->
+<<<<<<< HEAD
+=======
+    <!-- **** CARBON EDITS START **** -->
+
+    <!-- LCD Density -->
+    <string-array name="lcd_density_entries" translatable="false">
+        <item>160</item>
+        <item>180</item>
+        <item>200</item>
+        <item>220</item>
+        <item>240</item>
+        <item>241</item>
+        <item>260</item>
+        <item>280</item>
+        <item>300</item>
+        <item>320</item>
+        <item>340</item>
+        <item>@string/custom_density</item>
+    </string-array>
+
+    <!-- Notification Shortcuts -->
     <string-array name="notification_shortcuts_quantity_entries" translatable="false">
         <item>4</item>
         <item>6 (Default)</item>
@@ -1025,6 +904,21 @@
         <item>@*android:drawable/ic_shortcut_unlock</item>
     </string-array>
 
+    <string-array name="lcd_density_stock_entries">
+        <item>160 -- mdpi</item>
+        <item>213 -- nexus7</item>
+        <item>240 -- hdpi</item>
+        <item>320 -- xhdpi</item>
+    </string-array>
+
+    <string-array name="lcd_density_stock_values" translatable="false">
+        <item>160</item>
+        <item>213</item>
+        <item>240</item>
+        <item>320</item>
+    </string-array>
+
+>>>>>>> e407a76... Settings: Notification Shortcuts (2/2)
     <!-- Volume Overlay options. -->
     <string-array name="volume_overlay_entries">
         <item>@string/volume_overlay_single</item>
@@ -1046,6 +940,31 @@
         <item>@string/icon_default</item>
         <item>@string/icon_presets</item>
         <item>@string/icon_custom</item>
+    </string-array>
+
+    <string-array name="lockscreen_icon_picker_labels" translatable="false">
+        <item>@string/icon_picker_alarm</item>
+        <item>@string/icon_picker_browser</item>
+        <item>@string/icon_picker_calendar</item>
+        <item>@string/icon_picker_camera</item>
+        <item>@string/icon_picker_chrome</item>
+        <item>@string/icon_picker_email</item>
+        <item>@string/icon_picker_email2</item>
+        <item>@string/icon_picker_facebook</item>
+        <item>@string/icon_picker_gallery</item>
+        <item>@string/icon_picker_google_small</item>
+        <item>@string/icon_picker_googleplus</item>
+        <item>@string/icon_picker_googletalk</item>
+        <item>@string/icon_picker_maps</item>
+        <item>@string/icon_picker_sms</item>
+        <item>@string/icon_picker_movie</item>
+        <item>@string/icon_picker_music</item>
+        <item>@string/icon_picker_nav_normal</item>
+        <item>@string/icon_picker_phone</item>
+        <item>@string/icon_picker_podcast</item>
+        <item>@string/icon_picker_rss</item>
+        <item>@string/icon_picker_search</item>
+        <item>@string/icon_picker_twitter</item>
     </string-array>
 
     <!-- Entries for custom lockscreen targets icons. -->
@@ -1095,6 +1014,32 @@
         <item>@*android:drawable/ic_lockscreen_sms</item>
         <item>@*android:drawable/ic_lockscreen_twitter</item>
     </string-array>
+
+	<string-array name="lockscreen_icon_picker_icons" translatable="false">
+        <item>@*android:drawable/ic_lockscreen_alarm_normal</item>
+        <item>@*android:drawable/ic_lockscreen_browser_normal</item>
+        <item>@*android:drawable/ic_lockscreen_calendar_normal</item>
+        <item>@*android:drawable/ic_lockscreen_camera_normal</item>
+        <item>@*android:drawable/ic_lockscreen_chrome_normal</item>
+        <item>@*android:drawable/ic_lockscreen_email_normal</item>
+        <item>@*android:drawable/ic_lockscreen_email2_normal</item>
+        <item>@*android:drawable/ic_lockscreen_facebook_normal</item>
+        <item>@*android:drawable/ic_lockscreen_gallery_normal</item>
+        <item>@*android:drawable/ic_lockscreen_google_small_normal</item>
+        <item>@*android:drawable/ic_lockscreen_gplus_normal</item>
+        <item>@*android:drawable/ic_lockscreen_gtalk_normal</item>
+        <item>@*android:drawable/ic_lockscreen_maps_normal</item>
+        <item>@*android:drawable/ic_lockscreen_sms_normal</item>
+        <item>@*android:drawable/ic_lockscreen_movie_normal</item>
+        <item>@*android:drawable/ic_lockscreen_music_normal</item>
+        <item>@*android:drawable/ic_lockscreen_nav_normal</item>
+        <item>@*android:drawable/ic_lockscreen_phone_normal</item>
+        <item>@*android:drawable/ic_lockscreen_podcast_normal</item>
+        <item>@*android:drawable/ic_lockscreen_rss_normal</item>
+        <item>@*android:drawable/ic_lockscreen_google_normal</item>
+        <item>@*android:drawable/ic_lockscreen_twitter_normal</item>
+    </string-array>
+
 
     <!-- Values for the notification light pulse spinners -->
     <string-array name="notification_pulse_length_entries" translatable="false">
@@ -1164,6 +1109,83 @@
         <item>@string/status_bar_hidden</item>
     </string-array>
 
+    <!-- Arrays required by Notification Widgets. -->
+    <string-array name="entries_brightness_widget" formatted="false" translatable="false">
+        <item>@string/cm_brightness_mode_auto</item>
+        <item>@string/cm_brightness_mode_dim</item>
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+
+   <string-array name="values_brightness_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="entries_network_widget">
+        <item>2G/3G+2G</item>  
+        <item>2G/3G Only</item>   
+        <item>2G/3G Only/3G+2G</item>
+    </string-array>
+
+    <string-array name="values_network_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="entries_screentimeout_widget">
+        <item>15s/1m/5m</item>
+        <item>30s/2m/5m</item>
+    </string-array>
+
+    <string-array name="values_screentimeout_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="entries_ring_widget" translatable="false">
+        <item>@string/cm_sound_mode_silent</item>
+        <item>@string/cm_sound_mode_vibrate</item>
+        <item>@string/cm_sound_mode_sound</item>
+        <item>@string/cm_sound_mode_soundVibrate</item>
+    </string-array>
+
+    <string-array name="values_ring_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="entries_flash_widget">
+        <item>Normal</item>
+        <item>High</item>
+    </string-array>
+
+    <string-array name="values_flash_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="haptic_feedback_entries">
+        <item>Use global setting</item>
+        <item>On</item>
+        <item>Off</item>
+    </string-array>
+
+    <string-array name="haptic_feedback_values" translatable="false">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
     <string-array name="status_bar_sizes_values" translatable="false">
         <item>0</item>
         <item>1</item>
@@ -1179,26 +1201,6 @@
         <item>4</item>
         <item>5</item>
     </string-array>
-
-    <string-array name="increasing_ring_interval_entries" translatable="false">
-        <item>@string/increasing_ring_interval_eachring</item>
-        <item>@string/increasing_ring_interval_half_second</item>
-        <item>@string/increasing_ring_interval_1second</item>
-        <item>@string/increasing_ring_interval_2seconds</item>
-        <item>@string/increasing_ring_interval_3seconds</item>
-        <item>@string/increasing_ring_interval_5seconds</item>
-        <item>@string/increasing_ring_interval_10seconds</item>
-    </string-array>
-
-    <integer-array name="increasing_ring_interval_values" translatable="false">
-        <item>0</item>
-        <item>500</item>
-        <item>1000</item>
-        <item>2000</item>
-        <item>3000</item>
-        <item>5000</item>
-        <item>10000</item>
-    </integer-array>
 
     <string-array name="entries_pie_gravity">
         <item>@string/pie_gravity_left</item>
@@ -1219,7 +1221,6 @@
         <item>@string/pie_size_default</item>
         <item>@string/pie_size_large</item>
         <item>@string/pie_size_gigantic</item>
-        <item>@string/pie_size_monster</item>
     </string-array>
 
     <string-array name="values_pie_size" translatable="false">
@@ -1227,7 +1228,6 @@
         <item>1.0</item>
         <item>1.1</item>
         <item>1.2</item>
-        <item>1.4</item>
     </string-array>
 
     <string-array name="entries_pie_mode">
@@ -1242,22 +1242,6 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
-    </string-array>
-
-    <string-array name="entries_pie_angle">
-        <item>@string/pie_angle_none</item>
-        <item>@string/pie_angle_small</item>
-        <item>@string/pie_angle_normal</item>
-        <item>@string/pie_angle_big</item>
-        <item>@string/pie_angle_huge</item>
-    </string-array>
-
-    <string-array name="values_pie_angle" translatable="false">
-        <item>0</item>
-        <item>6</item>
-        <item>12</item>
-        <item>18</item>
-        <item>24</item>
     </string-array>
 
     <string-array name="entries_pie_gap">
@@ -1332,42 +1316,6 @@
         <item>1800000</item>
     </string-array>
 
-    <string-array name="entries_screentimeout_widget">
-        <item>15s | 1m | 5m</item>
-        <item>30s | 2m | 5m</item>
-    </string-array>
-
-    <string-array name="values_screentimeout_widget" translatable="false">
-        <item>0</item>
-        <item>1</item>
-    </string-array>
-
-    <string-array name="entries_ring_widget" translatable="false">
-        <item>@string/cm_sound_mode_silent</item>
-        <item>@string/cm_sound_mode_vibrate</item>
-        <item>@string/cm_sound_mode_sound</item>
-        <item>@string/cm_sound_mode_soundVibrate</item>
-    </string-array>
-
-    <string-array name="values_ring_widget" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
-    <string-array name="entries_network_widget">
-        <item>2G | 2G+3G</item>
-        <item>2G | 3G</item>
-        <item>2G | 3G | 2G+3G</item>
-    </string-array>
-
-    <string-array name="values_network_widget" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
     <!-- Custom lock screen background-->
     <string-array name="lockscreen_background_entries" translatable="false">
         <item>@string/lockscreen_background_color_fill</item>
@@ -1381,14 +1329,13 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="hardware_keys_action_entries" translatable="false">
+<string-array name="hardware_keys_action_entries" translatable="false">
         <item>@string/hardware_keys_action_nothing</item>
         <item>@string/hardware_keys_action_menu</item>
         <item>@string/hardware_keys_action_app_switch</item>
         <item>@string/hardware_keys_action_search</item>
         <item>@string/hardware_keys_action_voice_search</item>
         <item>@string/hardware_keys_action_in_app_search</item>
-        <item>@string/hardware_keys_action_launch_camera</item>
     </string-array>
 
     <string-array name="hardware_keys_action_values" translatable="false">
@@ -1398,137 +1345,19 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
-        <item>6</item>
+    </string-array>
+    
+    <!-- CRT off animation mode -->
+    <string-array name="entries_system_power_crt_mode">
+        <item>@string/system_power_crt_mode_horizontal</item>
+        <item>@string/system_power_crt_mode_vertical</item>
+        <item>@string/system_power_crt_mode_both</item>
     </string-array>
 
-    <!-- Auto-brightness sensitivity -->
-    <string-array name="auto_brightness_sensitivity_entries" translatable="false">
-        <item>@string/auto_brightness_sensitivity_verylow</item>
-        <item>@string/auto_brightness_sensitivity_low</item>
-        <item>@string/auto_brightness_sensitivity_medium</item>
-        <item>@string/auto_brightness_sensitivity_high</item>
-        <item>@string/auto_brightness_sensitivity_veryhigh</item>
-    </string-array>
-
-    <integer-array name="auto_brightness_sensitivity_values">
-        <item>150</item>
-        <item>125</item>
-        <item>100</item>
-        <item>50</item>
-        <item>25</item>
-    </integer-array>
-
-    <!-- HALO stuff -->
-    <string-array name="entries_halo_size">
-        <item>@string/halo_size_miniscule</item>
-        <item>@string/halo_size_small</item>
-        <item>@string/halo_size_default</item>
-        <item>@string/halo_size_large</item>
-        <item>@string/halo_size_gigantic</item>
-        <item>@string/halo_size_monster</item>
-    </string-array>
-
-    <string-array name="values_halo_size" translatable="false">
-        <item>0.6</item>
-        <item>0.8</item>
-        <item>1.0</item>
-        <item>1.2</item>
-        <item>1.4</item>
-        <item>1.6</item>
-    </string-array>
-
-    <string-array name="entries_halo_state">
-        <item>@string/halo_state_black</item>
-        <item>@string/halo_state_white</item>
-    </string-array>
-
-    <string-array name="values_halo_state" translatable="false">
-        <item>1</item>
-        <item>0</item>
-    </string-array>
-
-    <string-array name="entries_halo_notification_count">
-        <item>@string/halo_notification_count_none</item>
-        <item>@string/halo_notification_count_total</item>
-        <item>@string/halo_notification_count_individual</item>
-        <item>@string/halo_notification_count_both</item>
-    </string-array>
-
-    <string-array name="values_halo_notification_count">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </string-array>
-
-<string-array name="entries_halo_msgbox_animation">
-        <item>@string/halo_msgbox_animation_none</item>
-        <item>@string/halo_msgbox_animation_flip</item>
-    </string-array>
-
-    <string-array name="values_halo_msgbox_animation">
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
-    <!-- NFC settings. -->
-    <string-array name="nfc_polling_mode_entries">
-       <item>@string/nfc_polling_mode_screen_off</item>
-       <item>@string/nfc_polling_mode_screen_locked</item>
-       <item>@string/nfc_polling_mode_screen_unlocked</item>
-    </string-array>
-
-    <string-array name="nfc_polling_mode_values">
-       <item>1</item>
-       <item>2</item>
-       <item>3</item>
-    </string-array>
-
-    <!-- Stylus Gestures -->
-    <string-array name="gestures_entries" translatable="false">
-        <item>@string/gestures_action_empty</item>
-        <item>@string/gestures_action_home</item>
-        <item>@string/gestures_action_back</item>
-        <item>@string/gestures_action_menu</item>
-        <item>@string/gestures_action_search</item>
-        <item>@string/gestures_action_recent</item>
-    </string-array>
-
-    <string-array name="gestures_values" translatable="false">
-        <item>1000</item>
-        <item>1001</item>
-        <item>1002</item>
-        <item>1003</item>
-        <item>1004</item>
-        <item>1005</item>
-    </string-array>
-
-    <!--- Volume key cursor control -->
-    <string-array name="volume_key_cursor_control_entries">
-        <item>@string/volume_key_cursor_control_off</item>
-        <item>@string/volume_key_cursor_control_on</item>
-        <item>@string/volume_key_cursor_control_on_reverse</item>
-    </string-array>
-
-    <string-array name="volume_key_cursor_control_values">
+    <string-array name="values_system_power_crt_mode" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
-    </string-array>
-
-    <!-- Arrays for root access capability -->
-    <string-array name="root_access_entries">
-        <item>@string/root_access_none</item>
-        <item>@string/root_access_apps</item>
-        <item>@string/root_access_adb</item>
-        <item>@string/root_access_all</item>
-    </string-array>
-
-    <string-array name="root_access_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
     </string-array>
 
 	<!-- QuickSettings tile background style -->
@@ -1536,11 +1365,6 @@
         <item>@string/tile_background_random</item>
         <item>@string/notif_background_color_fill</item>
         <item>@string/notif_background_default</item>
-    </string-array>
-
-    <!-- Gamma calibration descriptors, deliberately empty as string values populated via
-    per-device overlay. Required to build on non-hardware tunable devices -->
-    <string-array name="gamma_descriptors">
     </string-array>
 
     <string-array name="tile_background_style_values" translatable="false">
