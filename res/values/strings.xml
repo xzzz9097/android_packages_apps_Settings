@@ -4721,5 +4721,12 @@
 	<string name="ad_hide_low_priority_summary">Hide low priority notifications such as those from Google Now.</string>
 	<string name="ad_excluded_apps_title">Excluded applications</string>
 	<string name="ad_excluded_apps_summary">Excluded applications will not show up in active display.</string>
+    <string name="trigger_category">Trigger region</string>
+    <string name="trigger_width_title">Trigger width</string>
+    <string name="trigger_width_summary">Adjust the width of the trigger area</string>
+    <string name="trigger_top_title">Trigger position</string>
+    <string name="trigger_top_summary">Adjust the vertical postion of the trigger area</string>
+    <string name="trigger_bottom_title">Trigger height</string>
+    <string name="trigger_bottom_summary">Adjust the height of the trigger area</string>
 
 </resources>
