@@ -4635,8 +4635,6 @@
     <string name="halo_state_summary">For black/white-listing notifications pinging through HALO</string>
     <string name="halo_state_black">Black list</string>
     <string name="halo_state_white">White list</string>
-    <string name="halo_pause_title">HALO pause active app</string>
-    <string name="halo_pause_summary">When opening an app with HALO the underlying app will get paused (enabled by default on low memory devices)</string>
 
     <!-- Quick pulldown -->
     <string name="quick_pulldown_title">Quick pulldown</string>
@@ -5022,5 +5020,15 @@
     <string name="cm_brightness_mode_dim">Dim</string>
     <string name="pref_flash_mode_title">Flash mode</string>
     <string name="expanded_haptic_feedback_title">Haptic feedback</string>
+
+    <string name="title_statusbar_clock">Clock preferences</string>
+    <string name="clock">Clock</string>
+    <string name="header_summary_clock">Clock location, AM/PM style, color</string>
+
+    <!-- Statusbar | Clock -->
+    <string name="clock_title_enable">Clock style</string>
+    <string name="title_clock_ampm_entries">AM/PM style</string>
+    <string name="enable_clock_weekday">Day of the week</string>
+    <string name="enable_clock_weekday_summary">Abbreviated day of the week before the time</string>
 
 </resources>
