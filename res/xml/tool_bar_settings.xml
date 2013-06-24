@@ -27,6 +27,12 @@
             android:summary="@string/quick_pulldown_summary"
             android:defaultValue="false" />
 
+		<CheckBoxPreference
+            android:key="floating_shade"
+            android:title="Multi-Window in Notification Tray"
+            android:summary="Enable floating windows with notifications and notification shortcuts"
+            android:defaultValue="false" />
+
 <!--        <CheckBoxPreference
             android:key="show_clock"
             android:title="@string/show_clock_title" />			-->
