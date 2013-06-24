@@ -215,7 +215,7 @@ public class Toolbar extends SettingsPreferenceFragment
                 mAmPmStyle.setEnabled(false);
                 mAmPmStyle.setSummary(R.string.status_bar_am_pm_info);
             }
-        } catch (SettingNotFoundException e) {
+        } catch (Exception e) {
             // This will hurt you, run away
         }
 
