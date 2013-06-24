@@ -37,6 +37,7 @@ public class Toolbar extends SettingsPreferenceFragment
     private static final String KEY_AM_PM_STYLE = "am_pm_style";
     private static final String KEY_SHOW_CLOCK = "show_clock";
     private static final String KEY_CIRCLE_BATTERY = "circle_battery";
+	private static final String KEY_FLOATING_SHADE = "floating_shade";
     private static final String KEY_STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
     private static final String STATUS_BAR_MAX_NOTIF = "status_bar_max_notifications";
     private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
@@ -48,6 +49,7 @@ public class Toolbar extends SettingsPreferenceFragment
     private ListPreference mAmPmStyle;
     private ListPreference mStatusBarMaxNotif;
     private CheckBoxPreference mQuickPullDown;
+	private CheckBoxPreference mFloatingShade;
     private CheckBoxPreference mShowClock;
     private CheckBoxPreference mCircleBattery;
     private CheckBoxPreference mStatusBarNotifCount;
@@ -86,6 +88,9 @@ public class Toolbar extends SettingsPreferenceFragment
         mAmPmStyle.setValue(String.valueOf(amPmStyle));
         mAmPmStyle.setSummary(mAmPmStyle.getEntry());
         mAmPmStyle.setOnPreferenceChangeListener(this);
+
+        mFloatingShade = (CheckBoxPreference) prefSet.findPreference(KEY_FLOATING_SHADE);
+        mFloatingShade.setChecked(Settings.System.getInt(mContext.getContentResolver(), Settings.System.FLOATING_SHADE, 0) == 1);
 
         mStatusBarMaxNotif = (ListPreference) prefSet.findPreference(STATUS_BAR_MAX_NOTIF);
         int maxNotIcons = Settings.System.getInt(mContext.getContentResolver(),
@@ -147,6 +152,10 @@ public class Toolbar extends SettingsPreferenceFragment
         } else if (preference == mQuickPullDown) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.QS_QUICK_PULLDOWN, mQuickPullDown.isChecked()
+                    ? 1 : 0);
+		} else if (preference == mFloatingShade) {	
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.FLOATING_SHADE, mFloatingShade.isChecked()
                     ? 1 : 0);
         } else if (preference == mStatusBarNotifCount) {
             Settings.System.putInt(mContext.getContentResolver(),
