@@ -61,11 +61,13 @@ public class PowerWidget extends SettingsPreferenceFragment implements
     private static final String UI_EXP_WIDGET_HIDE_ONCHANGE = "expanded_hide_onchange";
     private static final String UI_EXP_WIDGET_HIDE_SCROLLBAR = "expanded_hide_scrollbar";
     private static final String UI_EXP_WIDGET_HAPTIC_FEEDBACK = "expanded_haptic_feedback";
+	private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 
     private CheckBoxPreference mPowerWidget;
     private CheckBoxPreference mPowerWidgetHideOnChange;
     private CheckBoxPreference mPowerWidgetHideScrollBar;
     private ListPreference mPowerWidgetHapticFeedback;
+	private CheckBoxPreference mStatusBarBrightnessControl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,9 @@ public class PowerWidget extends SettingsPreferenceFragment implements
             PreferenceScreen prefSet = getPreferenceScreen();
 
             mPowerWidget = (CheckBoxPreference) prefSet.findPreference(UI_EXP_WIDGET);
+
+			mStatusBarBrightnessControl = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL); 
+
             mPowerWidgetHideOnChange = (CheckBoxPreference) prefSet
                     .findPreference(UI_EXP_WIDGET_HIDE_ONCHANGE);
             mPowerWidgetHideScrollBar = (CheckBoxPreference) prefSet
@@ -99,7 +104,16 @@ public class PowerWidget extends SettingsPreferenceFragment implements
             mPowerWidgetHapticFeedback.setValue(Integer.toString(Settings.System.getInt(
                     getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.EXPANDED_HAPTIC_FEEDBACK, 2)));
-        }
+			mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                	Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
+        	try {
+            	if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                	    Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
+                	mStatusBarBrightnessControl.setEnabled(false);
+                	mStatusBarBrightnessControl.setSummary(R.string.status_bar_toggle_info);
+            	}
+        	} catch (SettingNotFoundException e) {}
+
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -379,6 +393,10 @@ public class PowerWidget extends SettingsPreferenceFragment implements
                 Settings.System.putString(getActivity().getApplicationContext().getContentResolver(),
                         Settings.System.EXPANDED_RING_MODE, TextUtils.join(SEPARATOR, arrValue));
                 updateSummary(TextUtils.join(SEPARATOR, arrValue), mRingMode, R.string.pref_ring_mode_summary);
+			} else if (preference == mStatusBarBrightnessControl) {
+	            value = mStatusBarBrightnessControl.isChecked();
+	            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+	                    Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1 : 0);
             } else if (preference == mFlashMode) {
                 int value = Integer.valueOf((String) newValue);
                 int index = mFlashMode.findIndexOfValue((String) newValue);
