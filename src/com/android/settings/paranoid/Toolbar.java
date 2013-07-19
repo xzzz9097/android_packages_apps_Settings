@@ -46,6 +46,7 @@ public class Toolbar extends SettingsPreferenceFragment
     private static final String KEY_HALO_STATE = "halo_state";
     private static final String KEY_HALO_HIDE = "halo_hide";
     private static final String KEY_HALO_REVERSED = "halo_reversed";
+    private static final String KEY_HALO_SIZE = "halo_size";
     private static final String KEY_HALO_PAUSE = "halo_pause";
     private static final String KEY_QUICK_PULL_DOWN = "quick_pulldown";
 //    private static final String KEY_AM_PM_STYLE = "am_pm_style";
@@ -80,6 +81,7 @@ public class Toolbar extends SettingsPreferenceFragment
     private ListPreference mPieAngle;
     private ListPreference mPieGap;
     private ListPreference mHaloState;
+    private ListPreference mHaloSize;
     private CheckBoxPreference mHaloHide;
     private CheckBoxPreference mHaloReversed;
     private CheckBoxPreference mHaloPause;
@@ -209,6 +211,16 @@ public class Toolbar extends SettingsPreferenceFragment
         mPieSize.setOnPreferenceChangeListener(this);
         mPieTrigger.setOnPreferenceChangeListener(this);
 
+        mHaloSize = (ListPreference) prefSet.findPreference(KEY_HALO_SIZE);
+        try {
+            float haloSize = Settings.System.getFloat(mContext.getContentResolver(),
+                    Settings.System.HALO_SIZE, 1.0f);
+            mHaloSize.setValue(String.valueOf(haloSize));  
+        } catch(Exception ex) {
+            // So what
+        }
+        mHaloSize.setOnPreferenceChangeListener(this);
+
         mPieGap = (ListPreference) prefSet.findPreference(PIE_GAP);
         int pieGap = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_GAP, 2);
@@ -258,7 +270,7 @@ public class Toolbar extends SettingsPreferenceFragment
         if(deviceKeys==15) {
              PreferenceScreen HARDWARE =(PreferenceScreen) prefSet.findPreference(KEY_HARDWARE_KEYS);
              prefSet.removePreference(HARDWARE);
-        } 
+        }
     }
 
     private boolean isHaloPolicyBlack() {
@@ -303,8 +315,8 @@ public class Toolbar extends SettingsPreferenceFragment
                     ? 1 : 0);
         } else if (preference == mStatusBarNotifCount) {
             Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.STATUS_BAR_NOTIF_COUNT,	mStatusBarNotifCount.isChecked()
-                    ? 1 : 0);	
+                    Settings.System.STATUS_BAR_NOTIF_COUNT, mStatusBarNotifCount.isChecked()
+                    ? 1 : 0);
         } else if (preference == mMenuButtonShow) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAV_BAR_TABUI_MENU, mMenuButtonShow.isChecked() ? 1 : 0);
@@ -318,7 +330,7 @@ public class Toolbar extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_MENU, mPieMenu.isChecked() ? 1 : 0);
         } else if (preference == mPieSearch) {
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),  
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_SEARCH, mPieSearch.isChecked() ? 1 : 0);
         } else if (preference == mPieCenter) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
@@ -354,6 +366,11 @@ public class Toolbar extends SettingsPreferenceFragment
             Settings.System.putFloat(getActivity().getContentResolver(),
                     Settings.System.PIE_SIZE, pieSize);
             return true;
+        } else if (preference == mHaloSize) {
+            float haloSize = Float.valueOf((String) newValue);
+            Settings.System.putFloat(getActivity().getContentResolver(),
+                    Settings.System.HALO_SIZE, haloSize);
+            return true;
         } else if (preference == mPieGravity) {
             int pieGravity = Integer.valueOf((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
@@ -380,7 +397,7 @@ public class Toolbar extends SettingsPreferenceFragment
                 mNotificationManager.setHaloPolicyBlack(state);
             } catch (android.os.RemoteException ex) {
                 // System dead
-            }          
+            }
             return true;
         }
         return false;
