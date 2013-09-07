@@ -356,7 +356,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     }
 
     private void updateVisibility() {
-        int visible = Settings.System.getInt(mContentResolver,
+        ContentResolver resolver = getActivity().getContentResolver();
+        int visible = Settings.System.getInt(resolver,
                     Settings.System.QUICK_SETTINGS_BACKGROUND_STYLE, 2);
         if (visible == 2) {
             mRandomColors.setEnabled(false);

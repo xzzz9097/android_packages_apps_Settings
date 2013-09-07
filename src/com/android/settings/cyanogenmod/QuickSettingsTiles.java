@@ -19,7 +19,6 @@ package com.android.settings.cyanogenmod;
 import java.util.Random;
 
 import static com.android.internal.util.cm.QSUtils.getTileTextColor;
-import static com.android.internal.util.cm.QSUtils.setBackgroundStyle;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -40,6 +39,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+// QSColors-related
+import android.provider.Settings;
+import android.content.ContentResolver;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -64,6 +67,7 @@ public class QuickSettingsTiles extends Fragment {
         mDragView = new DraggableGridView(getActivity(), null);
         mContainer = container;
         mInflater = inflater;
+        mContext = getActivity().getApplicationContext();
         PackageManager pm = getActivity().getPackageManager();
         if (pm != null) {
             try {
@@ -245,7 +249,7 @@ public class QuickSettingsTiles extends Fragment {
     }
 
     public void setTileBackground() {
-        ContentResolver mContentResolver = mContext.getContentResolver();
+        ContentResolver mContentResolver = getActivity().getContentResolver();
         int tileBg = Settings.System.getInt(mContentResolver,
                 Settings.System.QUICK_SETTINGS_BACKGROUND_STYLE, 2);
         int blueDark = Settings.System.getInt(mContentResolver,
