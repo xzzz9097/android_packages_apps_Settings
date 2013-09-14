@@ -38,6 +38,14 @@
             android:summary="Enable floating windows with notifications and notification shortcuts"
             android:defaultValue="false" />
 
+	<!-- Active display -->
+	<PreferenceScreen
+	    android:key="active_display"
+	    android:fragment="com.android.settings.chameleonos.ActiveDisplaySettings"
+	    android:title="@string/ad_settings_title"
+	    android:summary="@string/ad_settings_summary">
+	</PreferenceScreen>
+
         <PreferenceScreen        
             android:id="@+id/slim_notification_shortcuts"
             android:fragment="com.android.settings.carbon.notificationshortcuts.NotificationShortcuts"
