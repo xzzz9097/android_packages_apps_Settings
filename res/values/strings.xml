@@ -4715,5 +4715,7 @@
     <string name="ad_show_ampm_title">Show AM/PM</string>
     <string name="ad_show_ampm_summary">Show AM/PM indicator next to time when using 12hour format</string>
 	<string name="ad_customizations_title">Customizations</string>
+	<string name="ad_sunlight_mode_title">Sunlight mode</string>
+	<string name="ad_sunlight_mode_summary">Invert the colors when in areas with bright light such as direct sunlight.</string>
 
 </resources>
