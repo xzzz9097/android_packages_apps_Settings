@@ -4717,5 +4717,7 @@
 	<string name="ad_customizations_title">Customizations</string>
 	<string name="ad_sunlight_mode_title">Sunlight mode</string>
 	<string name="ad_sunlight_mode_summary">Invert the colors when in areas with bright light such as direct sunlight.</string>
+	<string name="ad_hide_low_priority_title">Hide low priority</string>
+	<string name="ad_hide_low_priority_summary">Hide low priority notifications such as those from Google Now.</string>
 
 </resources>
