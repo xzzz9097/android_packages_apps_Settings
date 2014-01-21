@@ -17,6 +17,12 @@ limitations under the License.
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/halo_settings_title">
 
+<CheckBoxPreference
+        android:key="floating_shade"
+        android:title="Multi-Window in Notification Tray"
+        android:summary="Enable floating windows with notifications and notification shortcuts"
+        android:defaultValue="false" />
+
     <ListPreference
         android:key="halo_state"
         android:dialogTitle="@string/halo_state_title"
