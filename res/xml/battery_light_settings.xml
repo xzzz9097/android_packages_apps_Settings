@@ -22,44 +22,38 @@
         android:title="@string/notification_light_general_title">
 
         <CheckBoxPreference
-            android:key="pulse_enabled"
-            android:title="@string/notification_pulse_title" />
-
-        <com.android.settings.notificationlight.ApplicationLightPreference
-            android:key="default"
-            android:title="@string/notification_light_default_value"
-            android:persistent="false"
-            android:dependency="pulse_enabled" />
+            android:key="battery_light_enabled"
+            android:title="@string/battery_light_title"
+            android:defaultValue="true" />
 
         <CheckBoxPreference
-            android:key="custom_enabled"
-            android:title="@string/notification_light_use_custom"
-            android:dependency="pulse_enabled" />
+            android:key="battery_light_pulse"
+            android:title="@string/battery_low_pulse_title"
+            android:defaultValue="true"
+            android:dependency="battery_light_enabled" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="phone_list"
-        android:title="@string/notification_light_phonelist_title" >
+        android:key="colors_list"
+        android:title="@string/battery_light_list_title"
+        android:dependency="battery_light_enabled" >
 
         <com.android.settings.notificationlight.ApplicationLightPreference
-            android:key="missed_call"
-            android:title="@string/notification_light_missed_call_title"
-            android:persistent="false"
-            android:dependency="pulse_enabled" />
+            android:key="low_color"
+            android:title="@string/battery_light_low_color_title"
+            android:persistent="false" />
 
         <com.android.settings.notificationlight.ApplicationLightPreference
-            android:key="voicemail"
-            android:title="@string/notification_light_voicemail_title"
-            android:persistent="false"
-            android:dependency="pulse_enabled" />
+            android:key="medium_color"
+            android:title="@string/battery_light_medium_color_title"
+            android:persistent="false" />
 
-    </PreferenceCategory>
+        <com.android.settings.notificationlight.ApplicationLightPreference
+            android:key="full_color"
+            android:title="@string/battery_light_full_color_title"
+            android:persistent="false" />
 
-    <PreferenceCategory
-        android:key="applications_list"
-        android:title="@string/notification_light_applist_title"
-        android:dependency="custom_enabled" >
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -44,18 +44,21 @@
                 android:title="@string/screensaver_settings_title"
                 android:fragment="com.android.settings.DreamSettings" />
 
-        <com.android.settings.WarnedListPreference
+        <com.android.settings.FontDialogPreference
                 android:key="font_size"
                 android:title="@string/title_font_size"
                 android:summary="@string/summary_font_size"
-                android:entries="@array/entries_font_size"
-                android:entryValues="@array/entryvalues_font_size"
                 android:dialogTitle="@string/dialog_title_font_size" />
 
         <PreferenceScreen
                 android:fragment="com.android.settings.notificationlight.NotificationLightSettings"
-                android:key="notification_led"
+                android:key="notification_pulse"
                 android:title="@string/notification_led_category_title" />
+
+        <PreferenceScreen
+                android:key="battery_light"
+                android:title="@string/battery_light_title"
+                android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
         <PreferenceScreen
                 android:key="wifi_display"
@@ -77,5 +80,23 @@
                 android:targetPackage="com.cyanogenmod.settings.device"
                 android:targetClass="com.cyanogenmod.settings.device.DisplaySettings" />
         </Preference>
+
+        <CheckBoxPreference
+            android:key="wake_when_plugged_or_unplugged"
+            android:title="@string/wake_when_plugged_or_unplugged_title"
+            android:summary="@string/wake_when_plugged_or_unplugged_summary"
+            android:defaultValue="false" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="double_tap_sleep_gesture"
+        android:title="@string/status_bar_double_tap_to_sleep_title"
+        android:summary="@string/status_bar_double_tap_to_sleep_summary"
+        android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="double_tap_wake_gesture"
+            android:title="@string/double_tap_to_wake_title"
+            android:summary="@string/double_tap_to_wake_summary"
+            android:defaultValue="false" />
 
 </PreferenceScreen>
