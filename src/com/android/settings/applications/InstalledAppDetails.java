@@ -126,7 +126,7 @@ public class InstalledAppDetails extends Fragment
     private View mScreenCompatSection;
     private CheckBox mAskCompatibilityCB;
     private CheckBox mEnableCompatibilityCB;
-    private CheckBox mPeekBlacklist, mFloatingBlacklist;
+    private CheckBox mPeekBlacklist, mFloatingBlacklist, mHoverBlacklist;
     private boolean mCanClearData = true;
     private TextView mAppVersion;
     private TextView mTotalSize;
@@ -370,11 +370,28 @@ public class InstalledAppDetails extends Fragment
                 mUninstallButton.setText(R.string.uninstall_text);
             }
         }
-        // If this is a device admin, it can't be uninstall or disabled.
+        // If this is a device admin, it can't be uninstalled or disabled.
         // We do this here so the text of the button is still set correctly.
         if (mDpm.packageHasActiveAdmins(mPackageInfo.packageName)) {
             enabled = false;
         }
+
+        // If this is the default (or only) home app, suppress uninstall (even if
+        // we still think it should be allowed for other reasons)
+        if (enabled && mHomePackages.contains(mPackageInfo.packageName)) {
+            ArrayList<ResolveInfo> homeActivities = new ArrayList<ResolveInfo>();
+            ComponentName currentDefaultHome  = mPm.getHomeActivities(homeActivities);
+            if (currentDefaultHome == null) {
+                // No preferred default, so permit uninstall only when
+                // there is more than one candidate
+                enabled = (mHomePackages.size() > 1);
+            } else {
+                // There is an explicit default home app -- forbid uninstall of
+                // that one, but permit it for installed-but-inactive ones.
+                enabled = !mPackageInfo.packageName.equals(currentDefaultHome.getPackageName());
+            }
+        }
+
         mUninstallButton.setEnabled(enabled);
         if (enabled) {
             // Register listener
@@ -385,12 +402,14 @@ public class InstalledAppDetails extends Fragment
     private void initBlacklistButton() {
         mBlacklistButton.setText(R.string.blacklist_button_title);
 
-        boolean allowedForPeek = true, allowedForFloating = true;
+        boolean allowedForPeek = true, allowedForFloating = true, allowedForHover = true;
         try {
             allowedForPeek = mNotificationManager
                     .isPackageAllowedForPeek(mAppEntry.info.packageName);
             allowedForFloating = mNotificationManager
                     .isPackageAllowedForFloatingMode(mAppEntry.info.packageName);
+            allowedForHover = mNotificationManager
+                    .isPackageAllowedForHover(mAppEntry.info.packageName);
         } catch (android.os.RemoteException ex) {
             // uh oh
         }
@@ -398,6 +417,8 @@ public class InstalledAppDetails extends Fragment
         mPeekBlacklist.setOnCheckedChangeListener(this);
         mFloatingBlacklist.setChecked(!allowedForFloating);
         mFloatingBlacklist.setOnCheckedChangeListener(this);
+        mHoverBlacklist.setChecked(!allowedForHover);
+        mHoverBlacklist.setOnCheckedChangeListener(this);
 
         mBlacklistButton.setOnClickListener(this);
     }
@@ -501,6 +522,7 @@ public class InstalledAppDetails extends Fragment
         mBlacklistDialogView = inflater.inflate(R.layout.blacklist_dialog, null);
         mPeekBlacklist = (CheckBox) mBlacklistDialogView.findViewById(R.id.peek_blacklist);
         mFloatingBlacklist = (CheckBox) mBlacklistDialogView.findViewById(R.id.floating_blacklist);
+        mHoverBlacklist = (CheckBox) mBlacklistDialogView.findViewById(R.id.hover_blacklist);
 
         return view;
     }
@@ -1367,6 +1389,14 @@ public class InstalledAppDetails extends Fragment
         }
     }
 
+    private void setHoverState(boolean state) {
+        try {
+            mNotificationManager.setHoverBlacklistStatus(mAppEntry.info.packageName, state);
+        } catch (android.os.RemoteException ex) {
+            mHoverBlacklist.setChecked(!state); // revert
+        }
+    }
+
     private int getPremiumSmsPermission(String packageName) {
         try {
             if (mSmsManager != null) {
@@ -1470,6 +1500,8 @@ public class InstalledAppDetails extends Fragment
             setPeekState(isChecked);
         } else if (buttonView == mFloatingBlacklist) {
             setFloatingModeState(isChecked);
+        } else if (buttonView == mHoverBlacklist) {
+            setHoverState(isChecked);
         }
     }
 }
